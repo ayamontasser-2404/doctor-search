@@ -1,4 +1,4 @@
-# azcare-doctor-search
+# doctor-search
 
 Search doctors by name, specialty, city, and availability. React 19, TypeScript, and Vite, with Material UI.
 

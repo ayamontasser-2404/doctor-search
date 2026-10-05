@@ -20,7 +20,7 @@ function ErrorFallback() {
   return (
     <Container maxWidth="sm" sx={{ py: { xs: 8, sm: 12 } }}>
       <Typography variant="overline" color="primary">
-        AZ Care
+        Find a doctor
       </Typography>
       <Typography variant="h1" sx={{ mt: 1, mb: 2, fontSize: { xs: '2rem', sm: '2.5rem' } }}>
         This view failed to load
