@@ -1,39 +1,37 @@
 # azcare-doctor-search
 
-React 19, TypeScript, and Vite, with MUI for UI. This repository is the application shell. Feature screens are not included yet.
+Search doctors by name, specialty, city, and availability. React 19, TypeScript, and Vite, with Material UI.
+
+The doctor list lives in `src/data/doctors.ts`. There is no API.
 
 ## Scripts
 
 ```bash
 npm install
 npm run dev
-npm run typecheck
+npm test
 npm run lint
 npm run build
 npm run preview
 ```
 
-## Environment
+The dev server listens on [http://localhost:43123](http://localhost:43123).
 
-Copy `.env.example` to `.env` for local overrides. Only `VITE_` variables are exposed to the client.
-
-| Variable | Purpose |
-| --- | --- |
-| `VITE_APP_NAME` | Document title |
-| `VITE_API_BASE_URL` | Reserved base URL for a future API client |
+Node.js 22 or newer is required.
 
 ## Structure
 
 ```text
 src/
-  app/         Composition root: providers and the router host
-  components/  Shared UI
-  config/      Typed environment access
-  layouts/     Route layouts
-  pages/       Route screens
-  routes/      Path constants and the router
-  theme/       MUI theme
-  types/       Ambient TypeScript declarations
+  App.tsx         Root composition
+  main.tsx        Browser entry
+  app/            Theme provider and the route tree
+  components/     Search, filters, doctor list, and cards
+  data/           Doctor records and filtering
+  pages/          Dashboard and the not-found screen
+  routes/         Path constants
+  theme/          Material UI theme
+  test/           Test setup
 ```
 
-Import application code through the `@/` alias, for example `@/pages/HomePage.tsx`.
+Import application code through the `@/` alias, for example `@/data/doctors.ts`.

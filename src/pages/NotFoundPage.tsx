@@ -1,30 +1,24 @@
-import { Box, Button, Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
 import { Link as RouterLink } from 'react-router'
-
 import { paths } from '@/routes/paths.ts'
 
 export function NotFoundPage() {
   return (
-    <Box
-      component="main"
-      sx={{
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        gap: 2,
-        px: 3,
-        py: 8,
-      }}
-    >
-      <Typography variant="h4" component="h1">
+    <Container maxWidth="sm" sx={{ py: { xs: 8, md: 12 } }}>
+      <Typography variant="overline" color="primary">
+        404
+      </Typography>
+      <Typography variant="h1" sx={{ mt: 1.5, mb: 2, fontSize: { xs: '2.25rem', sm: '2.75rem' } }}>
         Page not found
       </Typography>
-      <Typography color="text.secondary">This address does not match a screen in the app.</Typography>
-      <Button component={RouterLink} to={paths.home} variant="contained">
-        Go home
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 440 }}>
+        That address is outside the physician workspace. Return to the foundation screen.
+      </Typography>
+      <Button variant="contained" component={RouterLink} to={paths.home}>
+        Return home
       </Button>
-    </Box>
+    </Container>
   )
 }

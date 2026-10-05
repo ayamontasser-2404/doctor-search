@@ -1,13 +1,31 @@
-import { fileURLToPath, URL } from 'node:url'
-
+import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
+
+const srcDir = fileURLToPath(new URL('./src', import.meta.url))
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': srcDir,
     },
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 43123,
+    strictPort: true,
+    allowedHosts: true,
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 43123,
+    strictPort: true,
+    allowedHosts: true,
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.ts',
+    css: true,
   },
 })
