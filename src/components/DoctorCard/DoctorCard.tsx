@@ -2,11 +2,13 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
+import { Link as RouterLink } from 'react-router'
 import chevronRight from '@/assets/doctor-search/chevron-right.svg'
 import globeIcon from '@/assets/doctor-search/globe.svg'
 import mapPinIcon from '@/assets/doctor-search/map-pin.svg'
 import verifiedIcon from '@/assets/doctor-search/verified.svg'
 import type { Doctor } from '@/data/doctors.ts'
+import { doctorPath } from '@/routes/paths.ts'
 import { layout } from '@/theme/theme.ts'
 
 type DoctorCardProps = {
@@ -213,7 +215,8 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
           }}
         />
         <Button
-          type="button"
+          component={RouterLink}
+          to={doctorPath(doctor.id)}
           aria-label={`View profile of ${doctor.name}`}
           sx={{
             width: { xs: '100%', md: layout.actionWidth },
