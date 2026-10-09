@@ -12,7 +12,7 @@ type SearchFiltersProps = {
 
 export function SearchFilters({ filters, onChange }: SearchFiltersProps) {
   return (
-    <div className="relative z-10 flex max-w-full flex-wrap gap-4 min-[1536px]:max-w-[1146px]">
+    <div className="relative z-10 flex max-w-full flex-wrap gap-4 xl:max-w-search">
       <FilterSelect
         label="Specialty"
         icon={stethoscopeIcon}

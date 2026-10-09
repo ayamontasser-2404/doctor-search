@@ -17,7 +17,7 @@ export function Dashboard() {
   return (
     <div className="min-h-screen bg-page">
       <h1 className="sr-only">Find a doctor</h1>
-      <div className="mx-auto max-w-[1536px]">
+      <div className="mx-auto max-w-page">
         <DoctorSearch
           query={query}
           filters={filters}
@@ -29,7 +29,7 @@ export function Dashboard() {
         />
         <section
           aria-label="Doctor results"
-          className="relative z-0 pt-4 pr-4 pb-8 pl-4 min-[600px]:pr-6 min-[600px]:pl-6 min-[900px]:pr-8 min-[900px]:pb-12 min-[900px]:pl-8 min-[1536px]:pt-1.5 min-[1536px]:pr-[77px] min-[1536px]:pl-[78px]"
+          className="relative z-0 px-4 pt-4 pb-8 sm:px-6 md:px-8 md:pb-12 xl:px-gutter xl:pt-1.5"
         >
           <div className="sr-only" aria-live="polite">
             {`${results.length} doctors`}

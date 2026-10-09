@@ -10,8 +10,8 @@ export function DoctorList({ doctors, onReset }: DoctorListProps) {
   if (doctors.length === 0) {
     return (
       <div className="py-16 text-center">
-        <h2 className="font-roboto text-2xl leading-[34px] font-bold text-ink">No doctors match these filters.</h2>
-        <p className="mt-2 mb-6 font-inter text-[18px] text-muted">Try another specialty, date, or city.</p>
+        <h2 className="font-roboto text-2xl leading-doctor font-bold text-ink">No doctors match these filters.</h2>
+        <p className="mt-2 mb-6 font-inter text-lg text-muted">Try another specialty, date, or city.</p>
         <button
           type="button"
           onClick={onReset}

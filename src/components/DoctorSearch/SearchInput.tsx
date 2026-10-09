@@ -50,10 +50,10 @@ export function SearchInput({ query, city, onQueryChange, onCityChange, onSearch
         event.preventDefault()
         onSearch()
       }}
-      className="relative z-20 flex w-full flex-col gap-[15px] rounded-3xl border-[1.5px] border-[#D6E5EF] bg-white p-[9px] shadow-[0px_4px_12px_rgba(40,78,112,0.09)] min-[900px]:min-h-[90px] min-[900px]:flex-row min-[900px]:items-center min-[1536px]:max-w-[1146px]"
+      className="relative z-20 flex w-full flex-col gap-4 rounded-3xl border border-stroke-strong bg-white p-2.5 shadow-bar md:min-h-search md:flex-row md:items-center xl:max-w-search"
     >
-      <div className="flex h-14 min-w-0 flex-1 items-center gap-[17px] pl-[14px] min-[900px]:h-[73px]">
-        <img src={searchIcon} alt="" className="block h-[27px] w-[27px] shrink-0" />
+      <div className="flex h-14 min-w-0 flex-1 items-center gap-4 pl-3.5 md:h-control">
+        <img src={searchIcon} alt="" className="block size-icon shrink-0" />
         <input
           value={query}
           onChange={(event) => {
@@ -61,10 +61,10 @@ export function SearchInput({ query, city, onQueryChange, onCityChange, onSearch
           }}
           placeholder="Search doctors, specialities or conditions..."
           aria-label="Search doctors, specialities or conditions"
-          className="min-w-0 flex-1 border-0 bg-transparent font-roboto text-base text-ink outline-none placeholder:text-muted min-[900px]:text-[21px]"
+          className="min-w-0 flex-1 border-0 bg-transparent font-roboto text-base text-ink outline-none placeholder:text-muted md:text-search"
         />
       </div>
-      <div ref={cityRef} className="relative w-full shrink-0 min-[900px]:w-[260px]">
+      <div ref={cityRef} className="relative w-full shrink-0 md:w-city">
         <button
           type="button"
           aria-haspopup="listbox"
@@ -74,18 +74,18 @@ export function SearchInput({ query, city, onQueryChange, onCityChange, onSearch
           onClick={() => {
             setOpen((current) => !current)
           }}
-          className="flex h-[73px] w-full cursor-pointer items-center justify-start gap-3 rounded-2xl border-[1.5px] border-[#F0F3F6] bg-white px-[23px] font-roboto text-xl font-normal text-[#111111] hover:border-[#D6E5EF]"
+          className="flex h-control w-full cursor-pointer items-center justify-start gap-3 rounded-2xl border border-stroke-soft bg-white px-6 font-roboto text-xl font-normal text-label hover:border-stroke-strong"
         >
-          <img src={mapPin} alt="" className="block h-[27px] w-[27px]" />
+          <img src={mapPin} alt="" className="block size-icon" />
           <span className="flex-1 text-left">{city}</span>
-          <img src={chevronDown} alt="" className="block h-[18px] w-[18px]" />
+          <img src={chevronDown} alt="" className="block size-chevron" />
         </button>
         {open ? (
           <ul
             id={menuId}
             role="menu"
             aria-label="City"
-            className="absolute top-full left-0 z-20 m-0 mt-1 w-full list-none rounded-lg border border-[#E8EFF5] bg-white px-0 py-1 shadow-[0px_4px_12px_rgba(40,78,112,0.09)]"
+            className="absolute top-full left-0 z-20 m-0 mt-1 w-full list-none rounded-lg border border-stroke bg-white px-0 py-1 shadow-bar"
           >
             {cityOptions.map((option) => (
               <li key={option} role="none">
@@ -107,7 +107,7 @@ export function SearchInput({ query, city, onQueryChange, onCityChange, onSearch
       </div>
       <button
         type="submit"
-        className="flex h-[73px] w-full shrink-0 cursor-pointer items-center justify-center gap-[14px] rounded-[15px] border-0 bg-brand font-inter text-xl font-medium text-white hover:bg-brand-hover min-[900px]:w-[233px] min-[900px]:text-2xl"
+        className="flex h-control w-full shrink-0 cursor-pointer items-center justify-center gap-3.5 rounded-control border-0 bg-brand font-inter text-xl font-medium text-white hover:bg-brand-hover md:w-submit md:text-2xl"
       >
         <img src={searchWhite} alt="" className="block h-7 w-7" />
         Search

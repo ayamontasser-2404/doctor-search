@@ -49,18 +49,18 @@ export function FilterSelect({ label, value, options, icon, onChange }: FilterSe
         onClick={() => {
           setOpen((current) => !current)
         }}
-        className="inline-flex h-[57px] cursor-pointer items-center gap-[13px] rounded-[32px] border-[1.5px] border-[#E8EFF5] bg-white px-[23px] font-inter text-lg leading-none font-normal whitespace-nowrap text-ink hover:border-[#D6E5EF]"
+        className="inline-flex h-filter cursor-pointer items-center gap-3 rounded-filter border border-stroke bg-white px-6 font-inter text-lg leading-none font-normal whitespace-nowrap text-ink hover:border-stroke-strong"
       >
         <img src={icon} alt="" className="block h-6 w-6" />
         {value}
-        <img src={chevronDown} alt="" className="ml-1 block h-[18px] w-[18px]" />
+        <img src={chevronDown} alt="" className="ml-1 block size-chevron" />
       </button>
       {open ? (
         <ul
           id={menuId}
           role="menu"
           aria-label={label}
-          className="absolute top-full left-0 z-20 m-0 mt-1 min-w-full list-none rounded-lg border border-[#E8EFF5] bg-white px-0 py-1 shadow-[0px_4px_12px_rgba(40,78,112,0.09)]"
+          className="absolute top-full left-0 z-20 m-0 mt-1 min-w-full list-none rounded-lg border border-stroke bg-white px-0 py-1 shadow-bar"
         >
           {options.map((option) => (
             <li key={option} role="none">

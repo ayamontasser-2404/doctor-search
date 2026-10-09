@@ -4,8 +4,14 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @theme {
+  --breakpoint-sm: 37.5rem;
+  --breakpoint-md: 56.25rem;
+  --breakpoint-lg: 75rem;
+  --breakpoint-xl: 96rem;
+
   --font-roboto: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   --font-inter: 'Inter', 'Helvetica', 'Arial', sans-serif;
+
   --color-ink: #061c39;
   --color-muted: #6d809a;
   --color-brand: #0860b5;
@@ -15,6 +21,82 @@
   --color-chip-text: #204e83;
   --color-page: #fcfdfe;
   --color-line: #e7edf2;
+  --color-stroke: #e8eff5;
+  --color-stroke-soft: #f0f3f6;
+  --color-stroke-strong: #d6e5ef;
+  --color-card-border: #eff2f5;
+  --color-star: #ffae00;
+  --color-label: #111111;
+
+  --radius-card: 1.625rem;
+  --radius-control: 0.9375rem;
+  --radius-filter: 2rem;
+
+  --spacing-card: 1.375rem;
+  --spacing-card-row: 1.625rem;
+  --spacing-chip-x: 0.8125rem;
+  --spacing-chip-y: 0.6875rem;
+  --spacing-gutter: 4.875rem;
+  --spacing-hero: 6.3125rem;
+  --spacing-section: 2.5625rem;
+  --spacing-action: 1.875rem;
+  --spacing-icon: 1.6875rem;
+  --spacing-chevron: 1.125rem;
+  --spacing-badge: 1.5625rem;
+  --spacing-meta: 1.4375rem;
+  --spacing-art-heart: 53.125rem;
+  --spacing-art-shapes-x: 65.8125rem;
+  --spacing-art-shapes-y: 11.9375rem;
+
+  --height-control: 4.5625rem;
+  --height-filter: 3.5625rem;
+  --height-portrait: 10.9375rem;
+  --height-divider: 10.75rem;
+  --height-hero: 19.375rem;
+  --min-height-hero: 19.375rem;
+  --height-art-heart: 6.3125rem;
+  --height-art-shapes: 7.4375rem;
+  --height-art-scope: 19.375rem;
+  --min-height-search: 5.625rem;
+  --min-height-card: 14.125rem;
+
+  --width-portrait: 11.4375rem;
+  --width-city: 16.25rem;
+  --width-submit: 14.5625rem;
+  --width-action: 15.3125rem;
+  --width-aside: 17.25rem;
+  --width-identity: 23.3125rem;
+  --width-services: 25.1875rem;
+  --width-star: 1.375rem;
+  --width-art-heart: 23.625rem;
+  --width-art-shapes: 10.9375rem;
+  --width-art-scope: 19.25rem;
+
+  --max-width-page: 96rem;
+  --max-width-search: 71.625rem;
+  --max-width-narrow: 37.5rem;
+  --max-width-copy: 27.5rem;
+  --max-width-note: 28.75rem;
+
+  --text-review: 0.9375rem;
+  --text-review--line-height: 1.2;
+  --text-doctor: 1.75rem;
+  --text-doctor--line-height: 2.125rem;
+  --text-search: 1.3125rem;
+  --text-display: 2.75rem;
+  --text-display--line-height: 1.15;
+  --text-error: 2rem;
+  --text-error--line-height: 1.15;
+  --text-error-lg: 2.5rem;
+  --text-error-lg--line-height: 1.15;
+
+  --leading-copy: 1.2;
+  --leading-doctor: 2.125rem;
+  --tracking-label: 0.08em;
+
+  --shadow-card: 0 4px 12px rgb(40 78 112 / 0.06);
+  --shadow-bar: 0 4px 12px rgb(40 78 112 / 0.09);
+  --background-image-hero: linear-gradient(180deg, #ecf7fc 0%, #f3fafd 65%, #eaf6fc 100%);
 }
 
 @layer base {

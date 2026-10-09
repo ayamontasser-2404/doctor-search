@@ -14,12 +14,12 @@ function reloadPage(): void {
 
 function ErrorFallback() {
   return (
-    <main className="mx-auto max-w-[600px] px-4 py-16 min-[600px]:py-24">
-      <p className="m-0 font-inter text-xs tracking-[0.08em] text-brand uppercase">Find a doctor</p>
-      <h1 className="mt-2 mb-4 font-roboto text-[2rem] font-medium tracking-tight text-ink min-[600px]:text-[2.5rem]">
+    <main className="mx-auto max-w-narrow px-4 py-16 sm:py-24">
+      <p className="m-0 font-inter text-xs tracking-label text-brand uppercase">Find a doctor</p>
+      <h1 className="mt-2 mb-4 font-roboto text-error font-medium tracking-tight text-ink sm:text-error-lg">
         This view failed to load
       </h1>
-      <p className="mb-6 max-w-[460px] font-inter text-xl leading-[1.2] text-muted">
+      <p className="mb-6 max-w-note font-inter text-xl leading-copy text-muted">
         The screen stopped while rendering. Reload the page to start again.
       </p>
       <button
