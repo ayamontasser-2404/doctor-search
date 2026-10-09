@@ -1,15 +1,10 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Paper from '@mui/material/Paper'
-import Typography from '@mui/material/Typography'
-import { Link as RouterLink } from 'react-router'
+import { Link } from 'react-router'
 import chevronRight from '@/assets/doctor-search/chevron-right.svg'
 import globeIcon from '@/assets/doctor-search/globe.svg'
 import mapPinIcon from '@/assets/doctor-search/map-pin.svg'
 import verifiedIcon from '@/assets/doctor-search/verified.svg'
 import type { Doctor } from '@/data/doctors.ts'
 import { doctorPath } from '@/routes/paths.ts'
-import { layout } from '@/theme/theme.ts'
 
 type DoctorCardProps = {
   doctor: Doctor
@@ -19,39 +14,25 @@ function StarRating({ rating }: { rating: number }) {
   const filled = Math.max(0, Math.min(5, Math.round(rating)))
 
   return (
-    <Box aria-hidden sx={{ display: 'flex', gap: '3px' }}>
+    <span aria-hidden className="flex gap-[3px]">
       {Array.from({ length: 5 }, (_, index) => (
-        <Box
-          key={index}
-          component="svg"
-          viewBox="0 0 22 24"
-          sx={{ width: 22, height: 24, display: 'block' }}
-        >
+        <svg key={index} viewBox="0 0 22 24" className="block h-6 w-[22px]">
           <path
             d="M11 0L14.2 8.14884L22 9.04186L16.2 14.9581L17.9 24L11 19.4233L4.1 24L5.8 14.9581L0 9.04186L7.8 8.14884L11 0Z"
             fill={index < filled ? '#FFAE00' : '#E7EDF2'}
           />
-        </Box>
+        </svg>
       ))}
-    </Box>
+    </span>
   )
 }
 
 function MetadataRow({ icon, children }: { icon: string; children: string }) {
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-      <Box component="img" src={icon} alt="" sx={{ width: 23, height: 23, display: 'block', flexShrink: 0 }} />
-      <Typography
-        sx={{
-          fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-          fontSize: { xs: 16, md: 20 },
-          color: 'text.secondary',
-          lineHeight: 1.2,
-        }}
-      >
-        {children}
-      </Typography>
-    </Box>
+    <span className="flex items-center gap-4">
+      <img src={icon} alt="" className="block h-[23px] w-[23px] shrink-0" />
+      <span className="font-inter text-base leading-[1.2] text-muted min-[900px]:text-xl">{children}</span>
+    </span>
   )
 }
 
@@ -59,183 +40,50 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   const distance = `${doctor.distanceKm.toFixed(1)} km · ${doctor.area}`
 
   return (
-    <Paper
-      component="article"
-      elevation={0}
-      sx={{
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: { xs: 'stretch', md: 'center' },
-        gap: { xs: 2.5, md: '26px' },
-        width: '100%',
-        minHeight: { lg: 226 },
-        px: `${layout.cardPaddingX}px`,
-        py: `${layout.cardPaddingY}px`,
-        borderRadius: `${layout.cardRadius}px`,
-        border: '1px solid #EFF2F5',
-        boxShadow: '0px 4px 12px rgba(40, 78, 112, 0.06)',
-        overflow: 'hidden',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row' },
-          flexWrap: { xs: 'wrap', xl: 'nowrap' },
-          alignItems: { sm: 'flex-start' },
-          gap: { xs: 2, md: '36px' },
-          flex: 1,
-          minWidth: 0,
-        }}
-      >
-        <Box
-          component="img"
+    <article className="flex w-full flex-col items-stretch gap-5 overflow-hidden rounded-[26px] border border-[#EFF2F5] bg-white px-6 py-[22px] shadow-[0px_4px_12px_rgba(40,78,112,0.06)] min-[900px]:flex-row min-[900px]:items-center min-[900px]:gap-[26px] min-[1200px]:min-h-[226px]">
+      <div className="flex min-w-0 flex-1 flex-col flex-wrap items-stretch gap-4 min-[600px]:flex-row min-[600px]:items-start min-[900px]:gap-9 min-[1536px]:flex-nowrap">
+        <img
           src={doctor.portraitUrl}
           alt=""
-          sx={{
-            width: { xs: 120, sm: layout.portraitWidth },
-            height: { xs: 120, sm: layout.portraitHeight },
-            borderRadius: `${layout.portraitRadius}px`,
-            objectFit: 'cover',
-            flexShrink: 0,
-          }}
+          className="h-[120px] w-[120px] shrink-0 rounded-2xl object-cover min-[600px]:h-[175px] min-[600px]:w-[183px]"
         />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '10px',
-            pt: { md: '4px' },
-            minWidth: 0,
-            flex: { xs: '1 1 240px', xl: '0 0 373px' },
-            width: { xl: 373 },
-          }}
-        >
-          <Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-              <Typography component="h2" variant="h2">
-                {doctor.name}
-              </Typography>
-              {doctor.verified ? (
-                <Box
-                  component="img"
-                  src={verifiedIcon}
-                  alt="Verified doctor"
-                  sx={{ width: 25, height: 25, display: 'block' }}
-                />
-              ) : null}
-            </Box>
-            <Typography
-              sx={{
-                mt: '6px',
-                fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-                fontSize: { xs: 16, md: 20 },
-                color: 'text.secondary',
-              }}
-            >
-              {doctor.specialty}
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+        <div className="flex min-w-0 flex-[1_1_240px] flex-col gap-2.5 min-[900px]:pt-1 min-[1536px]:w-[373px] min-[1536px]:flex-[0_0_373px]">
+          <div>
+            <div className="flex flex-wrap items-center gap-2.5">
+              <h2 className="m-0 font-roboto text-[1.75rem] leading-[34px] font-bold tracking-normal text-ink">{doctor.name}</h2>
+              {doctor.verified ? <img src={verifiedIcon} alt="Verified doctor" className="block h-[25px] w-[25px]" /> : null}
+            </div>
+            <p className="m-0 mt-1.5 font-inter text-base text-muted min-[900px]:text-xl">{doctor.specialty}</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
             <StarRating rating={doctor.rating} />
-            <Typography
-              sx={{
-                fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-                fontWeight: 500,
-                fontSize: { xs: 16, md: 20 },
-                color: 'primary.dark',
-              }}
-            >
-              {doctor.rating.toFixed(1)}
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-                fontSize: { xs: 15, md: 18 },
-                color: 'text.secondary',
-              }}
-            >
-              ({doctor.reviewCount} reviews)
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '11px', pt: '9px' }}>
+            <span className="font-inter text-base font-medium text-navy min-[900px]:text-xl">{doctor.rating.toFixed(1)}</span>
+            <span className="font-inter text-[15px] text-muted min-[900px]:text-lg">({doctor.reviewCount} reviews)</span>
+          </div>
+          <div className="flex flex-col gap-[11px] pt-[9px]">
             <MetadataRow icon={mapPinIcon}>{distance}</MetadataRow>
             <MetadataRow icon={globeIcon}>{`Speaks: ${doctor.languages.join(', ')}`}</MetadataRow>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignContent: 'flex-start',
-            rowGap: '10px',
-            columnGap: '14px',
-            pt: { md: '17px' },
-            flex: { xs: '1 1 100%', xl: '0 0 403px' },
-            width: { xl: 403 },
-            maxWidth: '100%',
-          }}
-        >
+          </div>
+        </div>
+        <div className="flex w-full max-w-full flex-[1_1_100%] flex-wrap content-start gap-x-[14px] gap-y-2.5 min-[900px]:pt-[17px] min-[1536px]:w-[403px] min-[1536px]:flex-[0_0_403px]">
           {doctor.careServices.map((service) => (
-            <Box
-              key={service}
-              sx={{
-                px: '13px',
-                py: '11px',
-                borderRadius: '12px',
-                bgcolor: 'primary.light',
-                color: 'secondary.main',
-                fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
-                fontSize: 15,
-                lineHeight: 1.2,
-              }}
-            >
+            <span key={service} className="rounded-xl bg-chip px-[13px] py-[11px] font-inter text-[15px] leading-[1.2] text-chip-text">
               {service}
-            </Box>
+            </span>
           ))}
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: { xs: 'stretch', md: 'flex-end' },
-          gap: '30px',
-          width: { xs: '100%', md: 276 },
-          flexShrink: 0,
-        }}
-      >
-        <Box
-          sx={{
-            display: { xs: 'none', md: 'block' },
-            width: '1px',
-            height: 172,
-            bgcolor: 'divider',
-            flexShrink: 0,
-          }}
-        />
-        <Button
-          component={RouterLink}
+        </div>
+      </div>
+      <div className="flex w-full shrink-0 items-center justify-stretch gap-[30px] min-[900px]:w-[276px] min-[900px]:justify-end">
+        <span className="hidden h-[172px] w-px shrink-0 bg-line min-[900px]:block" />
+        <Link
           to={doctorPath(doctor.id)}
           aria-label={`View profile of ${doctor.name}`}
-          sx={{
-            width: { xs: '100%', md: layout.actionWidth },
-            height: 57,
-            gap: '10px',
-            borderRadius: '15px',
-            bgcolor: 'primary.main',
-            color: 'primary.contrastText',
-            fontSize: 20,
-            fontWeight: 500,
-            '&:hover': {
-              bgcolor: '#064E94',
-            },
-          }}
+          className="flex h-[57px] w-full items-center justify-center gap-2.5 rounded-[15px] bg-brand font-roboto text-xl font-medium text-white no-underline hover:bg-brand-hover min-[900px]:w-[245px]"
         >
           View Profile
-          <Box component="img" src={chevronRight} alt="" sx={{ width: 23, height: 23, display: 'block' }} />
-        </Button>
-      </Box>
-    </Paper>
+          <img src={chevronRight} alt="" className="block h-[23px] w-[23px]" />
+        </Link>
+      </div>
+    </article>
   )
 }

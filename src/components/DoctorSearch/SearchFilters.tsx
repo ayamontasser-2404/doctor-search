@@ -1,10 +1,8 @@
-import Box from '@mui/material/Box'
 import calendarIcon from '@/assets/doctor-search/calendar.svg'
 import mapPinIcon from '@/assets/doctor-search/map-pin-filter.svg'
 import starIcon from '@/assets/doctor-search/star.svg'
 import stethoscopeIcon from '@/assets/doctor-search/stethoscope.svg'
 import { dateOptions, locationOptionsFor, sortOptions, specialtyOptionsFor, type DoctorSearchFilters } from '@/data/doctors.ts'
-import { layout } from '@/theme/theme.ts'
 import { FilterSelect } from './FilterSelect.tsx'
 
 type SearchFiltersProps = {
@@ -14,16 +12,7 @@ type SearchFiltersProps = {
 
 export function SearchFilters({ filters, onChange }: SearchFiltersProps) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: `${layout.filterGap}px`,
-        maxWidth: { xl: 1146 },
-        position: 'relative',
-        zIndex: 1,
-      }}
-    >
+    <div className="relative z-10 flex max-w-full flex-wrap gap-4 min-[1536px]:max-w-[1146px]">
       <FilterSelect
         label="Specialty"
         icon={stethoscopeIcon}
@@ -60,6 +49,6 @@ export function SearchFilters({ filters, onChange }: SearchFiltersProps) {
           onChange({ ...filters, sort })
         }}
       />
-    </Box>
+    </div>
   )
 }

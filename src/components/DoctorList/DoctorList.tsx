@@ -1,10 +1,5 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import { DoctorCard } from '@/components/DoctorCard/DoctorCard.tsx'
 import type { Doctor } from '@/data/doctors.ts'
-import { layout } from '@/theme/theme.ts'
 
 type DoctorListProps = {
   doctors: Doctor[]
@@ -14,27 +9,27 @@ type DoctorListProps = {
 export function DoctorList({ doctors, onReset }: DoctorListProps) {
   if (doctors.length === 0) {
     return (
-      <Box sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h2" sx={{ fontSize: 24 }}>
-          No doctors match these filters.
-        </Typography>
-        <Typography color="text.secondary" sx={{ mt: 1, mb: 3, fontSize: 18 }}>
-          Try another specialty, date, or city.
-        </Typography>
-        <Button variant="contained" onClick={onReset}>
+      <div className="py-16 text-center">
+        <h2 className="font-roboto text-2xl leading-[34px] font-bold text-ink">No doctors match these filters.</h2>
+        <p className="mt-2 mb-6 font-inter text-[18px] text-muted">Try another specialty, date, or city.</p>
+        <button
+          type="button"
+          onClick={onReset}
+          className="inline-flex cursor-pointer items-center justify-center rounded-2xl border-0 bg-brand px-4 py-1.5 font-roboto text-base font-medium text-white hover:bg-brand-hover"
+        >
           Reset filters
-        </Button>
-      </Box>
+        </button>
+      </div>
     )
   }
 
   return (
-    <Stack component="ul" spacing={`${layout.cardGap}px`} sx={{ m: 0, p: 0, listStyle: 'none' }}>
+    <ul className="m-0 flex list-none flex-col gap-5 p-0">
       {doctors.map((doctor) => (
-        <Box component="li" key={doctor.id}>
+        <li key={doctor.id}>
           <DoctorCard doctor={doctor} />
-        </Box>
+        </li>
       ))}
-    </Stack>
+    </ul>
   )
 }
