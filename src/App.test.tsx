@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { createMemoryRouter, RouterProvider } from 'react-router'
 import { describe, expect, it } from 'vitest'
-import { AppProviders } from '@/app/providers.tsx'
 import { routes } from '@/app/router.tsx'
 import { App } from './App.tsx'
 
@@ -31,11 +30,7 @@ describe('App', () => {
     const user = userEvent.setup()
     const memoryRouter = createMemoryRouter(routes, { initialEntries: ['/unknown'] })
 
-    render(
-      <AppProviders>
-        <RouterProvider router={memoryRouter} />
-      </AppProviders>,
-    )
+    render(<RouterProvider router={memoryRouter} />)
 
     expect(screen.getByRole('heading', { name: 'Page not found' })).toBeVisible()
     await user.click(screen.getByRole('link', { name: 'Return home' }))

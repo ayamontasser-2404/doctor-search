@@ -1,7 +1,3 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 type ErrorBoundaryProps = {
@@ -18,20 +14,22 @@ function reloadPage(): void {
 
 function ErrorFallback() {
   return (
-    <Container maxWidth="sm" sx={{ py: { xs: 8, sm: 12 } }}>
-      <Typography variant="overline" color="primary">
-        Find a doctor
-      </Typography>
-      <Typography variant="h1" sx={{ mt: 1, mb: 2, fontSize: { xs: '2rem', sm: '2.5rem' } }}>
+    <main className="mx-auto max-w-[600px] px-4 py-16 min-[600px]:py-24">
+      <p className="m-0 font-inter text-xs tracking-[0.08em] text-brand uppercase">Find a doctor</p>
+      <h1 className="mt-2 mb-4 font-roboto text-[2rem] font-medium tracking-tight text-ink min-[600px]:text-[2.5rem]">
         This view failed to load
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 3, maxWidth: 460 }}>
+      </h1>
+      <p className="mb-6 max-w-[460px] font-inter text-xl leading-[1.2] text-muted">
         The screen stopped while rendering. Reload the page to start again.
-      </Typography>
-      <Button variant="contained" onClick={reloadPage}>
+      </p>
+      <button
+        type="button"
+        onClick={reloadPage}
+        className="inline-flex cursor-pointer items-center justify-center rounded-2xl border-0 bg-brand px-4 py-2 font-roboto text-base font-medium text-white hover:bg-brand-hover"
+      >
         Reload
-      </Button>
-    </Container>
+      </button>
+    </main>
   )
 }
 
@@ -49,9 +47,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+        <div className="min-h-screen bg-page">
           <ErrorFallback />
-        </Box>
+        </div>
       )
     }
 

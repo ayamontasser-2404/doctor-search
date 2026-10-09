@@ -2,16 +2,13 @@ import { describe, expect, test } from '@jest/globals'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router'
-import { AppProviders } from '@/app/providers.tsx'
 import { Dashboard } from './Dashboard.tsx'
 
 function renderDashboard() {
   render(
-    <AppProviders>
-      <MemoryRouter>
-        <Dashboard />
-      </MemoryRouter>
-    </AppProviders>,
+    <MemoryRouter>
+      <Dashboard />
+    </MemoryRouter>,
   )
 }
 
